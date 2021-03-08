@@ -8,7 +8,7 @@
 }
 
 .top-row {
-    height: 7rem;
+    height: 4rem;
     background-color: var(--accent1);
 }
 
@@ -55,7 +55,7 @@
     color: white;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 850px) {
     .navbar-toggler {
         display: none;
     }
@@ -63,5 +63,9 @@
     .collapse {
         /* Never collapse the sidebar for wide screens */
         display: block;
+    }
+
+    .top-row {
+        height: 7rem;
     }
 }
