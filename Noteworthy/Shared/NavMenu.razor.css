@@ -13,7 +13,10 @@
 }
 
 .navbar-brand {
-    font-size: 1.1rem;
+    font-size: 2rem;
+}
+.navbar-logo {
+    width: 180px;
 }
 
 .oi {
