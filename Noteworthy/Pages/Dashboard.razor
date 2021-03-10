@@ -20,7 +20,32 @@
 
         <div class="graph-container">
             <p class="stat-title text-center">Notes per day</p>
+            <MudChart ChartOptions="Options" ChartType="ChartType.Line" ChartSeries="@Series" XAxisLabels="@XAxisLabels" Width="100%" Height="350px"></MudChart>
+
         </div>
 
     </div>
 </div>
+
+
+@code {
+
+    public List<ChartSeries> Series = new List<ChartSeries>();
+    public ChartOptions Options = new ChartOptions();
+    public string[] XAxisLabels = { "2021-01-01", "2021-01-02", "2021-01-03", "2021-01-04", "2021-01-05", "2021-01-06", "2021-01-07" };
+
+    protected override void OnInitialized()
+    {
+        double[] Data1 = { 5, 10, 8, 25, 15, 30, 15 };
+
+
+        Options.ChartPalette = new string[] { "#FC5185" };
+
+
+        Series.Add(new ChartSeries() { Name = "Notes", Data = Data1 });
+
+
+
+        StateHasChanged();
+    }
+}
