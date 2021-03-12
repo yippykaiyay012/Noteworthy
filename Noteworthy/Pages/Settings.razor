@@ -1,0 +1,64 @@
+﻿@page "/settings"
+
+<h1 class="title">Settings</h1>
+
+
+
+<div class="container">
+    <div class="settings-container">
+        <h4>Adjust Noteworthy Fields</h4>
+        <div class="setting-options">
+            <table class="table">
+                <tr>
+                    <th><h4>Field</h4></th>
+                    <th><h4>Type</h4></th>
+                </tr>
+                @foreach (var field in Note.NoteFields)
+                {
+                    <tr>
+                        <td>
+                            <input class="form-control" type="text" placeholder="@field.Name" />
+                        </td>
+                        <td>
+                            <select class="form-control">
+                                @foreach (var type in (NoteTypes[])Enum.GetValues(typeof(NoteTypes)))
+                                {
+                                    <option>@type</option>
+
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn-delete form-control" @onclick="(() => RemoveNoteField(field))">-</button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <div class="fab" @onclick="AddNoteField"> + </div>
+    </div>
+</div>
+
+
+@code {
+
+    Note Note = new();
+
+    protected override void OnInitialized()
+    {
+        Note.NoteFields.Add(new NoteField { Id = 1, Name = "Title", NoteType = NoteTypes.Text });
+    }
+
+
+    void AddNoteField()
+    {
+        Note.NoteFields.Add(new());
+    }
+
+    void RemoveNoteField(NoteField field)
+    {
+        Note.NoteFields.Remove(field);
+    }
+
+}
